@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '~https://fonts.googleapis.com/css?family=Parisienne';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~https://code.getmdl.io/1.1.3/material.pink-orange.min.css';
+@import '~http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100';
+@import '~https://cdn.firebase.com/libs/firebaseui/1.0.1/firebaseui.css';
+
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -ms-overflow-style: none;
+  overflow: auto;
+}

@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('ngrx4yoga App', () => {
+describe('new-app App', () => {
   let page: AppPage;
 
   beforeEach(() => {
