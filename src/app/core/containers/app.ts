@@ -6,10 +6,10 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
 import * as fromAuth from '../../auth/reducers';
 import * as layout from '../actions/layout';
-import * as Auth from '../../auth/actions/auth';
+import * as Auth from '../../auth/actions/user.actions';
 
 @Component({
-  selector: 'bc-app',
+  selector: 'app-yl',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <bc-layout>
@@ -22,7 +22,7 @@ import * as Auth from '../../auth/actions/auth';
         </bc-nav-item>
         <bc-nav-item (activate)="closeSidenav()" *ngIf="!(loggedIn$ | async)">
           Sign In
-        </bc-nav-item>        
+        </bc-nav-item>
         <bc-nav-item (activate)="logout()" *ngIf="loggedIn$ | async">
           Sign Out
         </bc-nav-item>
@@ -33,7 +33,7 @@ import * as Auth from '../../auth/actions/auth';
 
       <router-outlet></router-outlet>
     </bc-layout>
-  `,
+  `
 })
 export class AppComponent {
   showSidenav$: Observable<boolean>;
@@ -65,6 +65,6 @@ export class AppComponent {
   logout() {
     this.closeSidenav();
 
-    this.store.dispatch(new Auth.Logout());
+    this.store.dispatch(new Auth.LogOffAction());
   }
 }

@@ -1,29 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { FirebaseUISignInSuccess } from 'firebaseui-angular';
 import { Store } from '@ngrx/store';
-import { Authenticate } from '../models/user';
+import { RouterLink } from '@angular/router';
 import * as fromAuth from '../reducers';
-import * as Auth from '../actions/auth';
+import * as User from '../actions/user.actions';
 
 @Component({
-  selector: 'bc-login-page',
-  template: `
-    <bc-login-form
-      (submitted)="onSubmit($event)"
-      [pending]="pending$ | async"
-      [errorMessage]="error$ | async">
-    </bc-login-form>
-  `,
-  styles: [],
+    selector: 'app-login-page',
+    templateUrl: './login-page.component.html',
+    // styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
-  pending$ = this.store.select(fromAuth.getLoginPagePending);
-  error$ = this.store.select(fromAuth.getLoginPageError);
 
-  constructor(private store: Store<fromAuth.State>) {}
+    constructor(
+        private afAuth: AngularFireAuth,
+        private store: Store<fromAuth.State>) {
+    }
 
-  ngOnInit() {}
+    ngOnInit(): void {
+        this.afAuth.authState.subscribe(d => console.log(d));
+    }
 
-  onSubmit($event: Authenticate) {
-    this.store.dispatch(new Auth.Login($event));
-  }
+    logout() {
+        this.store.dispatch(new User.LogOffAction());
+    }
+
+    successCallback(data: FirebaseUISignInSuccess) {
+        this.store.dispatch(new User.GetUserSuccessAction(data.currentUser));
+    }
 }

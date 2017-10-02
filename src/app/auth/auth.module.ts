@@ -5,18 +5,40 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { AuthMethods, AuthProvider, AuthProviderWithCustomConfig, FirebaseUIAuthConfig, FirebaseUIModule, CredentialHelper } from 'firebaseui-angular';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LoginPageComponent } from './containers/login-page.component';
-import { LoginFormComponent } from './components/login-form.component';
-
-import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
-import { AuthEffects } from './effects/auth.effects';
+import { UserEffects } from './effects/user.effects';
 import { reducers } from './reducers';
+import { environment } from '../../environments/environment';
 
-export const COMPONENTS = [LoginPageComponent, LoginFormComponent];
+
+const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
+  providers: [
+    AuthProvider.Google,
+    AuthProvider.Facebook,
+    AuthProvider.Password
+  ],
+  method: AuthMethods.Redirect,
+  tos: '<your-tos-link>',
+  credentialHelper: CredentialHelper.AccountChooser
+};
+
+
+export const COMPONENTS = [LoginPageComponent];
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, MaterialModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    RouterModule.forChild([{ path: 'login', component: LoginPageComponent }]),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+  ],
   declarations: COMPONENTS,
   exports: COMPONENTS,
 })
@@ -24,7 +46,7 @@ export class AuthModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: RootAuthModule,
-      providers: [AuthService, AuthGuard],
+      providers: [AuthGuard]
     };
   }
 }
@@ -32,9 +54,8 @@ export class AuthModule {
 @NgModule({
   imports: [
     AuthModule,
-    RouterModule.forChild([{ path: 'login', component: LoginPageComponent }]),
     StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([AuthEffects]),
+    EffectsModule.forFeature([UserEffects])
   ],
 })
 export class RootAuthModule {}

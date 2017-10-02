@@ -25,13 +25,14 @@ import { CustomRouterStateSerializer } from './shared/utils';
 import { AppComponent } from './core/containers/app';
 import { environment } from '../environments/environment';
 
+
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes),
 
     /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer
