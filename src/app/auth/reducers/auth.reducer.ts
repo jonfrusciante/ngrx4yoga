@@ -15,7 +15,7 @@ export function reducer(state = initialState, action: user.Actions): State {
       return Object.assign({}, state, {
         user: null,
       });
-    case user.LOGIN_SUCCESS:
+    case user.GET_USER_SUCCESS:
       const newUser = action.payload;
       return Object.assign({}, state, {
         user: newUser,

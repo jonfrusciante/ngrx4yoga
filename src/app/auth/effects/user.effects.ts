@@ -31,9 +31,12 @@ export class UserEffects {
   @Effect({ dispatch: false })
   loginRedirect$ = this.actions$
     .ofType(User.LOGIN_REDIRECT, User.LOG_OFF)
-    .do(authed => {
-      this.router.navigate(['/login']);
-    });
+    .do(() => this.router.navigate(['/login']));
+
+  @Effect({ dispatch: false })
+  loginSuccessRedirect$ = this.actions$
+    .ofType(User.LOGIN_SUCCESS)
+    .do(() => this.router.navigate(['/']));
 
   constructor(
     private actions$: Actions,

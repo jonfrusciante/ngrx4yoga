@@ -8,8 +8,7 @@ import * as User from '../actions/user.actions';
 
 @Component({
     selector: 'app-login-page',
-    templateUrl: './login-page.component.html',
-    // styleUrls: ['./login-page.component.css']
+    templateUrl: './login-page.html'
 })
 export class LoginPageComponent implements OnInit {
 
@@ -28,5 +27,6 @@ export class LoginPageComponent implements OnInit {
 
     successCallback(data: FirebaseUISignInSuccess) {
         this.store.dispatch(new User.GetUserSuccessAction(data.currentUser));
+        this.store.dispatch(new User.LoginSuccessAction());
     }
 }

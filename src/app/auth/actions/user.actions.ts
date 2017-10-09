@@ -5,10 +5,11 @@ import * as firebase from 'firebase/app';
 export const LOG_OFF = '[User] Log Off';
 export const LOG_OFF_SUCCESS = '[User] Log Off Success';
 export const LOGIN = '[User] Log In';
+export const GET_USER_SUCCESS = '[User] Get User Success';
 export const LOGIN_SUCCESS = '[User] Login Success';
-export const LOGIN_REDIRECT = '[Auth] Login Redirect';
-export const GET_USER = '[Auth] Get User';
-export const GET_USER_FAIL = '[Auth] Get User Fail';
+export const LOGIN_REDIRECT = '[User] Login Redirect';
+export const GET_USER = '[User] Get User';
+export const GET_USER_FAIL = '[User] Get User Fail';
 
 
 export class LogOffAction implements Action {
@@ -24,9 +25,13 @@ export class LogInAction implements Action {
 }
 
 export class GetUserSuccessAction implements Action {
-  readonly type = LOGIN_SUCCESS;
+  readonly type = GET_USER_SUCCESS;
 
   constructor(public payload: firebase.User) { }
+}
+
+export class LoginSuccessAction implements Action {
+  readonly type = LOGIN_SUCCESS;
 }
 
 export class LoginRedirect implements Action {
@@ -48,6 +53,7 @@ export type Actions =
   | LogOffSuccessAction
   | LogInAction
   | GetUserSuccessAction
+  | LoginSuccessAction
   | LoginRedirect
   | GetUserAction
   | GetUserFailAction;

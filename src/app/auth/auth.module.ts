@@ -8,11 +8,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthMethods, AuthProvider, AuthProviderWithCustomConfig, FirebaseUIAuthConfig, FirebaseUIModule, CredentialHelper } from 'firebaseui-angular';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { LoginPageComponent } from './containers/login-page.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { UserEffects } from './effects/user.effects';
 import { reducers } from './reducers';
 import { environment } from '../../environments/environment';
+import { AuthRoutingModule, routedComponents } from './auth-routing.module';
 
 
 const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
@@ -27,35 +27,26 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
 };
 
 
-export const COMPONENTS = [LoginPageComponent];
-
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
-    RouterModule.forChild([{ path: 'login', component: LoginPageComponent }]),
+    AuthRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    StoreModule.forFeature('auth', reducers),
+    EffectsModule.forFeature([UserEffects])
   ],
-  declarations: COMPONENTS,
-  exports: COMPONENTS,
+  declarations: [routedComponents],
+  exports: [routedComponents]
 })
 export class AuthModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: RootAuthModule,
+      ngModule: AuthModule,
       providers: [AuthGuard]
     };
   }
 }
-
-@NgModule({
-  imports: [
-    AuthModule,
-    StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([UserEffects])
-  ],
-})
-export class RootAuthModule {}

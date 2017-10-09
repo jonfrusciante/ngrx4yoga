@@ -11,29 +11,7 @@ import * as Auth from '../../auth/actions/user.actions';
 @Component({
   selector: 'app-yl',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <bc-layout>
-      <bc-sidenav [open]="showSidenav$ | async">
-        <bc-nav-item (activate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/" icon="book" hint="View your book collection">
-          My Collection
-        </bc-nav-item>
-        <bc-nav-item (activate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/books/find" icon="search" hint="Find your next book!">
-          Browse Books
-        </bc-nav-item>
-        <bc-nav-item (activate)="closeSidenav()" *ngIf="!(loggedIn$ | async)">
-          Sign In
-        </bc-nav-item>
-        <bc-nav-item (activate)="logout()" *ngIf="loggedIn$ | async">
-          Sign Out
-        </bc-nav-item>
-      </bc-sidenav>
-      <bc-toolbar (openMenu)="openSidenav()">
-        Book Collection
-      </bc-toolbar>
-
-      <router-outlet></router-outlet>
-    </bc-layout>
-  `
+  templateUrl: './app.html'
 })
 export class AppComponent {
   showSidenav$: Observable<boolean>;

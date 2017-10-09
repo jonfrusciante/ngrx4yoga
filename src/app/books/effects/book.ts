@@ -18,20 +18,8 @@ import * as book from '../actions/book';
 import { Book } from '../models/book';
 
 export const SEARCH_DEBOUNCE = new InjectionToken<number>('Search Debounce');
-export const SEARCH_SCHEDULER = new InjectionToken<Scheduler>(
-  'Search Scheduler'
-);
+export const SEARCH_SCHEDULER = new InjectionToken<Scheduler>('Search Scheduler');
 
-/**
- * Effects offer a way to isolate and easily test side-effects within your
- * application.
- *
- * If you are unfamiliar with the operators being used in these examples, please
- * check out the sources below:
- *
- * Official Docs: http://reactivex.io/rxjs/manual/overview.html#categories-of-operators
- * RxJS 5 Operators By Example: https://gist.github.com/btroncone/d6cf141d6f2c00dc6b35
- */
 
 @Injectable()
 export class BookEffects {

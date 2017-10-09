@@ -16,8 +16,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
+import { YogaModule } from './yoga/yoga.module';
 
-import { routes } from './routes';
+import { AppRoutingModule } from './app-routing.module';
 import { reducers, metaReducers } from './reducers';
 import { schema } from './db';
 import { CustomRouterStateSerializer } from './shared/utils';
@@ -26,13 +27,18 @@ import { AppComponent } from './core/containers/app';
 import { environment } from '../environments/environment';
 
 
+
+import { HomePageComponent } from './yoga/containers/home-page';
+
+
+
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
-    RouterModule.forRoot(routes),
+    AppRoutingModule,
 
     /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer
@@ -78,6 +84,8 @@ import { environment } from '../environments/environment';
     CoreModule.forRoot(),
 
     AuthModule.forRoot(),
+
+    YogaModule
   ],
   providers: [
     /**
