@@ -10,6 +10,7 @@ export const environment = {
     apiKey: 'AIzaSyDrRFBRO_8Rrn9LoGdwCIeobi9YbFiMgA4',
     authDomain: 'sonne-454a8.firebaseapp.com',
     databaseURL: 'https://sonne-454a8.firebaseio.com',
+    projectId: 'sonne-454a8',
     storageBucket: 'sonne-454a8.appspot.com',
     messagingSenderId: '916917602522'
   }

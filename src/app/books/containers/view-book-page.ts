@@ -19,10 +19,10 @@ import * as book from '../actions/book';
  * SelectedBookPageComponent
  */
 @Component({
-  selector: 'bc-view-book-page',
+  selector: 'app-view-book-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <bc-selected-book-page></bc-selected-book-page>
+    <app-selected-book-page></app-selected-book-page>
   `,
 })
 export class ViewBookPageComponent implements OnDestroy {

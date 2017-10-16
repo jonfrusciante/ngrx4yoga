@@ -3,9 +3,9 @@ import { Component, Input } from '@angular/core';
 import { Book } from '../models/book';
 
 @Component({
-  selector: 'bc-book-authors',
+  selector: 'app-book-authors',
   template: `
-    <h5 md-subheader>Written By:</h5>
+    <h5 matSubheader>Written By:</h5>
     <span>
       {{ authors | bcAddCommas }}
     </span>

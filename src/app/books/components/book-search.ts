@@ -4,22 +4,24 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import { Component, Output, Input, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'bc-book-search',
+  selector: 'app-book-search',
   template: `
-    <md-card>
-      <md-card-title>Find a Book</md-card-title>
-      <md-card-content>
-        <md-input-container>
-          <input mdInput placeholder="Search for a book" [value]="query" (keyup)="search.emit($event.target.value)">
-        </md-input-container>
-        <md-spinner [class.show]="searching"></md-spinner>
-      </md-card-content>
-    </md-card>
+    <mat-card>
+      <mat-card-title>Find a Book</mat-card-title>
+      <mat-card-content>
+        <form>
+          <mat-form-field>
+            <input matInput placeholder="Search for a book" [value]="query" (keyup)="search.emit($event.target.value)">
+          </mat-form-field>
+        </form>
+        <mat-spinner [class.show]="searching"></mat-spinner>
+      </mat-card-content>
+    </mat-card>
   `,
   styles: [
     `
-    md-card-title,
-    md-card-content {
+    mat-card-title,
+    mat-card-content {
       display: flex;
       justify-content: center;
     }
@@ -28,11 +30,11 @@ import { Component, Output, Input, EventEmitter } from '@angular/core';
       width: 300px;
     }
 
-    md-card-spinner {
+    mat-card-spinner {
       padding-left: 60px; // Make room for the spinner
     }
 
-    md-spinner {
+    mat-spinner {
       width: 30px;
       height: 30px;
       position: relative;
@@ -41,7 +43,7 @@ import { Component, Output, Input, EventEmitter } from '@angular/core';
       opacity: 0.0;
     }
 
-    md-spinner.show {
+    mat-spinner.show {
       opacity: 1.0;
     }
   `,
@@ -51,4 +53,5 @@ export class BookSearchComponent {
   @Input() query = '';
   @Input() searching = false;
   @Output() search = new EventEmitter<string>();
+
 }

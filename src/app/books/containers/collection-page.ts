@@ -8,14 +8,14 @@ import * as collection from '../actions/collection';
 import { Book } from '../models/book';
 
 @Component({
-  selector: 'bc-collection-page',
+  selector: 'app-collection-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <md-card>
-      <md-card-title>My Collection</md-card-title>
-    </md-card>
+    <mat-card>
+      <mat-card-title>My Collection</mat-card-title>
+    </mat-card>
 
-    <bc-book-preview-list [books]="books$ | async"></bc-book-preview-list>
+    <app-book-preview-list [books]="books$ | async"></app-book-preview-list>
   `,
   /**
    * Container components are permitted to have just enough styles
@@ -25,7 +25,7 @@ import { Book } from '../models/book';
    */
   styles: [
     `
-    md-card-title {
+    mat-card-title {
       display: flex;
       justify-content: center;
     }

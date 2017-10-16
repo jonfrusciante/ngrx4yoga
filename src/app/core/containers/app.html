@@ -1,24 +1,24 @@
-<bc-layout>
-  <bc-sidenav [open]="showSidenav$ | async">
-    <bc-nav-item (activate)="closeSidenav()" routerLink="/home" icon="home" hint="Ort und Zeit">
+<app-layout>
+  <app-sidenav [open]="showSidenav$ | async">
+    <app-nav-item (activate)="closeSidenav()" routerLink="/home" icon="home" hint="Ort und Zeit">
       Yoga
-    </bc-nav-item>
-    <bc-nav-item (activate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/books" icon="book" hint="View your book collection">
+    </app-nav-item>
+    <app-nav-item (activate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/books" icon="book" hint="View your book collection">
       My Collection
-    </bc-nav-item>
-    <bc-nav-item (activate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/books/find" icon="search" hint="Find your next book!">
+    </app-nav-item>
+    <app-nav-item (activate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/books/find" icon="search" hint="Find your next book!">
       Browse Books
-    </bc-nav-item>
-    <bc-nav-item (activate)="closeSidenav()" *ngIf="!(loggedIn$ | async)" routerLink="/login">
+    </app-nav-item>
+    <app-nav-item (activate)="closeSidenav()" *ngIf="!(loggedIn$ | async)" routerLink="/login">
       Sign In
-    </bc-nav-item>
-    <bc-nav-item (activate)="logout()" *ngIf="loggedIn$ | async">
+    </app-nav-item>
+    <app-nav-item (activate)="logout()" *ngIf="loggedIn$ | async">
       Sign Out
-    </bc-nav-item>
-  </bc-sidenav>
-  <bc-toolbar (openMenu)="openSidenav()">
+    </app-nav-item>
+  </app-sidenav>
+  <app-toolbar (openMenu)="openSidenav()">
     Book Collection
-  </bc-toolbar>
+  </app-toolbar>
 
   <router-outlet></router-outlet>
-</bc-layout>
+</app-layout>

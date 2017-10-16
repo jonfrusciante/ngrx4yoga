@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { AppMaterialModule } from './../app-material/app-material.module';
 
 import { AppComponent } from './containers/app';
 import { NotFoundPageComponent } from './containers/not-found-page';
@@ -11,6 +11,7 @@ import { SidenavComponent } from './components/sidenav';
 import { ToolbarComponent } from './components/toolbar';
 
 import { GoogleBooksService } from './services/google-books';
+
 
 export const COMPONENTS = [
   AppComponent,
@@ -22,7 +23,7 @@ export const COMPONENTS = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule, MaterialModule],
+  imports: [CommonModule, RouterModule, AppMaterialModule],
   declarations: COMPONENTS,
   exports: COMPONENTS,
 })

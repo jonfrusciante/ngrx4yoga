@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { BookAuthorsComponent } from './book-authors';
@@ -11,6 +11,8 @@ import { BookPreviewListComponent } from './book-preview-list';
 import { BookSearchComponent } from './book-search';
 
 import { PipesModule } from '../../shared/pipes';
+
+import { AppMaterialModule } from './../../app-material/app-material.module';
 
 export const COMPONENTS = [
   BookAuthorsComponent,
@@ -24,11 +26,16 @@ export const COMPONENTS = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MaterialModule,
+    FormsModule,
     RouterModule,
     PipesModule,
+    AppMaterialModule
   ],
-  declarations: COMPONENTS,
-  exports: COMPONENTS,
+  declarations: [
+    COMPONENTS
+  ],
+  exports: [
+    COMPONENTS
+  ]
 })
 export class ComponentsModule {}

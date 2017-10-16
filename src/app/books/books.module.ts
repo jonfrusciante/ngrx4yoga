@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -14,19 +13,23 @@ import { SelectedBookPageComponent } from './containers/selected-book-page';
 import { reducers } from './reducers';
 import { BooksRoutingModule, routedComponents } from './books-routing.module';
 
+import { AppMaterialModule } from './../app-material/app-material.module';
+
+
+
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule,
     ComponentsModule,
     BooksRoutingModule,
     StoreModule.forFeature('books', reducers),
     EffectsModule.forFeature([BookEffects, CollectionEffects]),
+    AppMaterialModule
   ],
   declarations: [
     routedComponents,
     SelectedBookPageComponent
   ],
-  providers: [BookExistsGuard],
+  providers: [BookExistsGuard]
 })
 export class BooksModule {}
