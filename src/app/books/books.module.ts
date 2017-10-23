@@ -5,7 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { ComponentsModule } from './components';
 import { BookEffects } from './effects/book';
-import { CollectionEffects } from './effects/collection';
+// import { CollectionEffects } from './effects/collection';
 import { BookExistsGuard } from './guards/book-exists';
 
 import { SelectedBookPageComponent } from './containers/selected-book-page';
@@ -23,7 +23,8 @@ import { AppMaterialModule } from './../app-material/app-material.module';
     ComponentsModule,
     BooksRoutingModule,
     StoreModule.forFeature('books', reducers),
-    EffectsModule.forFeature([BookEffects, CollectionEffects]),
+    // EffectsModule.forFeature([BookEffects, CollectionEffects]),
+    EffectsModule.forFeature([BookEffects]),
     AppMaterialModule
   ],
   declarations: [

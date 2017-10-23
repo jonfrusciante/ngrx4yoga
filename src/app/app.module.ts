@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { DBModule } from '@ngrx/db';
+// import { DBModule } from '@ngrx/db';
 import {
   StoreRouterConnectingModule,
   RouterStateSerializer,
@@ -20,7 +20,7 @@ import { YogaModule } from './yoga/yoga.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { reducers, metaReducers } from './reducers';
-import { schema } from './db';
+// import { schema } from './db';
 import { CustomRouterStateSerializer } from './shared/utils';
 
 import { AppComponent } from './core/containers/app';
@@ -79,7 +79,7 @@ import { HomePageComponent } from './yoga/containers/home-page';
      * `provideDB` sets up @ngrx/db with the provided schema and makes the Database
      * service available.
      */
-    DBModule.provideDB(schema),
+    // DBModule.provideDB(schema),
 
     CoreModule.forRoot(),
 
